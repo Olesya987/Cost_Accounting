@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COST ACCOUNTING</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Учет моих расходов</h1>
+      <div class="add-spend">
+        <div class="characters inp1">
+          <p>Куда было потрачено:</p>
+          <input id="where-spend" type="text" placeholder="Куда было потрачено" />
+        </div>
+        <div class="characters inp2" >
+          <p>Сколько было потрачено:</p>
+          <input id="how-much" type="number" placeholder="Сколько было потрачено" />
+        </div>
+        <div class="characters">
+          <button id="add-spend">Добавить</button>
+        </div>
+      </div>
+      <div class="cost">
+        <p style="margin: 0 8px">Итого:</p>
+        <p id="cost">0 р.</p>
+      </div>
+    </div>
+
+    <div id="list-spend">
+    </div>
+  </body>
+</html>
