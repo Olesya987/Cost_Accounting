@@ -6,21 +6,13 @@ let buttonAdd = null;
 
 let content = null;
 let container = null;
-let num = null;
-let textWhere = null;
-let textDate = null;
-let textHowMuch = null;
-let textRubl = null;
-let imgDel = null;
-let imgEdit = null;
-let div1 = null;
-let div2 = null;
-let div3 = null;
+
 let finalcost = 0;
-let textFinalCost = null;
+
 let input1 = null;
 let input2 = null;
 let input3 = null;
+
 let indexCost = null;
 let indexCost2 = null;
 let count = 0;
@@ -44,11 +36,11 @@ window.onload = async () => {
   render();
 };
 
-const writeWhere = async (event) => {
+const writeWhere = (event) => {
   varWhere = event.target.value;
 };
 
-const writeHowMuch = async (event) => {
+const writeHowMuch = (event) => {
   varHowMuch = event.target.value;
 };
 
@@ -57,7 +49,7 @@ const addCost = async (event) => {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0");
-    var yyyy = today.getFullYear();
+    let yyyy = today.getFullYear();
     today = dd + "." + mm + "." + yyyy;
 
     const response = await fetch("http://localhost:8080/post", {
@@ -85,9 +77,9 @@ const addCost = async (event) => {
   }
 };
 
-const render = async () => {
+const render = () => {
   finalcost = 0;
-  let counter = 0;
+  // let counter = 0;
   content = document.getElementById("list-spend");
   while (content.firstChild) {
     content.removeChild(content.firstChild);
@@ -96,33 +88,33 @@ const render = async () => {
     container = document.createElement("div");
     container.id = `spend ${index}`;
 
-    num = document.createElement("p");
-    num.innerText = `${++counter})`;
+    const num = document.createElement("p");
+    num.innerText = `${index+1})`;
 
-    textWhere = document.createElement("p");
+    const textWhere = document.createElement("p");
     textWhere.innerText = item.where;
 
-    textDate = document.createElement("p");
+    const textDate = document.createElement("p");
     textDate.innerText = item.date;
 
-    textHowMuch = document.createElement("p");
+    const textHowMuch = document.createElement("p");
     textHowMuch.innerText = item.howMuch;
 
-    textRubl = document.createElement("p");
+    const textRubl = document.createElement("p");
     textRubl.innerText = "р.";
 
-    imgDel = document.createElement("img");
+    const imgDel = document.createElement("img");
     imgDel.src = "icons8-удалить-64.png";
     imgDel.onclick = function () {
       funcDel(index);
     };
 
-    imgEdit = document.createElement("img");
+    const imgEdit = document.createElement("img");
     imgEdit.src = "icons8-редактировать-64.png";
 
-    div1 = document.createElement("div");
-    div2 = document.createElement("div");
-    div3 = document.createElement("div");
+    const div1 = document.createElement("div");
+    const div2 = document.createElement("div");
+    const div3 = document.createElement("div");
 
     input1 = document.createElement("input");
     input2 = document.createElement("input");
@@ -166,7 +158,7 @@ const render = async () => {
   outlay.forEach((item) => {
     finalcost += +item.howMuch;
   });
-  textFinalCost = document.getElementById("cost");
+  const textFinalCost = document.getElementById("cost");
   textFinalCost.innerText = `${finalcost} р.`;
 };
 
@@ -182,7 +174,7 @@ funcDel = async (index) => {
   render();
 };
 
-const funcEdit = async (event, index) => {
+const funcEdit = (event, index) => {
   indexCost = index;
   count++;
   render();

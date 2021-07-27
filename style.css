@@ -143,6 +143,13 @@ p {
   align-items: flex-end;
   justify-content: space-between;
 }
+
+.inp1 {
+  width: 55%;
+}
+.inp2 {
+  width: 30%;
+}
 .characters {
   display: flex;
   flex-direction: column;
@@ -202,7 +209,7 @@ button:focus {
   padding: 10px;
   /* border: 1px solid black; */
 }
-.cost p{
+.cost p {
   font-size: 1.8rem;
 }
 
@@ -228,7 +235,7 @@ button:focus {
   border-radius: 10px;
 }
 
-#list-spend div{
+#list-spend div {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -236,40 +243,52 @@ button:focus {
   justify-content: space-between;
 }
 
-#list-spend div div{
+#list-spend div div {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 }
+#list-spend div div input {
+  padding: 10px;
+  width: 80%;
 
-#list-spend div div:first-child{
+  outline: none;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+#list-spend div div:first-child {
   width: 250%;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 }
 
-#list-spend div div:last-child{
+#list-spend div div:last-child {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-end;
 }
 
-#list-spend div div p{
+#list-spend div div p {
   margin-right: 8px;
   font-size: 1.8rem;
 }
 
-img{
+img {
   width: 34px;
   height: 34px;
   margin: 10px;
   cursor: pointer;
 }
 
-#list-spend div div img:last-child{
+#list-spend div div img:last-child {
   margin-right: 0;
 }
