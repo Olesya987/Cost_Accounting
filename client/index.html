@@ -6,32 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COST ACCOUNTING</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js"></script>
   </head>
   <body>
     <div class="main">
       <h1>Учет моих расходов</h1>
       <div class="add-spend">
-        <div class="characters">
-          <p>Куда было пострачено:</p>
-          <input type="text" placeholder="Куда было пострачено" />
+        <div class="characters" style="width: 55%">
+          <p>Куда было потрачено:</p>
+          <input id="where-spend" type="text" placeholder="Куда было потрачено" />
+        </div>
+        <div class="characters" style="width: 30%">
+          <p>Сколько было потрачено:</p>
+          <input id="how-much" type="number" placeholder="Сколько было потрачено" />
         </div>
         <div class="characters">
-          <p>Сколько было пострачено:</p>
-          <input type="text" placeholder="Сколько было пострачено" />
-        </div>
-        <div class="characters">
-          <button>Добавить</button>
+          <button id="add-spend">Добавить</button>
         </div>
       </div>
       <div class="cost">
-        <p>Итого:</p>
-        <p>7818 р.</p>
+        <p style="margin: 0 8px">Итого:</p>
+        <p id="cost">0 р.</p>
       </div>
     </div>
 
-    <div>
-      <div></div>
+    <div id="list-spend">
     </div>
   </body>
 </html>
