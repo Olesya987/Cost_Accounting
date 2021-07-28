@@ -251,6 +251,7 @@ button:focus {
   align-items: center;
   justify-content: flex-start;
 }
+
 #list-spend div div input {
   padding: 10px;
   width: 80%;
