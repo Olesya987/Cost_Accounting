@@ -95,10 +95,8 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap");
-
 body {
   height: 100vh;
   width: 100vw;
@@ -109,7 +107,6 @@ body {
   justify-content: flex-start;
   background-color: #dceefb;
 }
-
 h1 {
   margin: 20px 0;
   font-size: 3em;
@@ -117,14 +114,12 @@ h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
-
 p {
   margin: 10px 0;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 1.2rem;
 }
-
 .main {
   height: auto;
   width: 100%;
@@ -134,7 +129,6 @@ p {
   justify-content: flex-start;
   text-align: center;
 }
-
 .add-spend {
   width: 60%;
   display: flex;
@@ -142,15 +136,12 @@ p {
   align-items: flex-end;
   justify-content: space-between;
 }
-
 .inp1 {
   width: 55%;
 }
-
 .inp2 {
   width: 30%;
 }
-
 .characters {
   display: flex;
   flex-direction: column;
@@ -159,7 +150,6 @@ p {
   padding: 10px;
   text-align: left;
 }
-
 .characters input {
   padding: 10px 15px;
   outline: none;
@@ -170,17 +160,14 @@ p {
   font-weight: 300;
   font-size: 1.2rem;
 }
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 .characters:first-child {
   width: 40%;
 }
-
 button {
   padding: 10px 10px;
   background-color: #77c7a8;
@@ -192,15 +179,12 @@ button {
   font-weight: 300;
   font-size: 1.2rem;
 }
-
 button:hover {
   background-color: #9ce0c6;
 }
-
 button:focus {
   background-color: #43ac84;
 }
-
 .cost {
   width: 60%;
   display: flex;
@@ -209,11 +193,9 @@ button:focus {
   justify-content: flex-end;
   padding: 10px;
 }
-
 .cost p {
   font-size: 1.8rem;
 }
-
 #list-spend {
   display: flex;
   flex-direction: column;
@@ -225,33 +207,31 @@ button:focus {
   padding-right: 0;
   overflow-y: scroll;
 }
-
 ::-webkit-scrollbar {
   background: rgba(255, 255, 255, 0);
   border-radius: 10px;
   width: 10px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #bddfffa1;
   border-radius: 10px;
 }
-
 #list-spend div {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
+  /* justify-content: space-between; */
 }
-
 #list-spend div div {
+  width: 20%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
+  padding: 0 5px;
 }
-
 #list-spend div div input {
   padding: 10px;
   width: 80%;
@@ -263,48 +243,49 @@ button:focus {
   font-weight: 300;
   font-size: 1.2rem;
 }
-
 #list-spend div div:first-child {
-  width: 250%;
+  width: 45%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
+  padding: 0 5px 0 0;
 }
-
+#list-spend div div:first-child p:last-child {
+  padding: 0 5px;
+  width: 100%;
+  word-break: break-word;
+}
 #list-spend div div:last-child {
+  width: 15%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  padding: 0;
 }
-
 #list-spend div div p {
+  /* width:100%; */
   margin-right: 8px;
   font-size: 1.8rem;
 }
-
 img {
   width: 34px;
   height: 34px;
   margin: 10px;
   cursor: pointer;
 }
-
 .total {
   margin: 0 8px 0 0;
 }
-
 #list-spend div div img:last-child {
   margin-right: 0;
 }
-
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 990px) {
   h1 {
     font-size: 2rem;
     margin: 10px 0;
   }
-
   .add-spend {
     width: 80%;
     display: flex;
@@ -312,7 +293,6 @@ img {
     align-items: center;
     justify-content: flex-start;
   }
-
   .characters {
     width: 90%;
     display: flex;
@@ -321,27 +301,22 @@ img {
     align-items: center;
     padding: 5px 10px;
   }
-
   .characters:first-child {
     width: 90%;
   }
-
   .characters p {
     width: 100%;
   }
-
   .cost {
     align-items: center;
     justify-content: center;
     padding: 0;
     width: 70%;
   }
-
   #list-spend {
     overflow-x: hidden;
     width: 70%;
   }
-
   #list-spend div {
     background-color: #77c7a89c;
     display: flex;
@@ -351,7 +326,6 @@ img {
     margin: 7px;
     border-radius: 10px;
   }
-
   #list-spend div div {
     width: 96%;
     display: flex;
@@ -359,11 +333,7 @@ img {
     align-items: center;
     justify-content: center;
   }
-
-  #list-spend div:last-child {
-    flex: 1;
-  }
-
+  
   #list-spend div div:first-child {
     width: 96%;
     display: flex;
@@ -371,27 +341,24 @@ img {
     align-items: center;
     justify-content: flex-start;
   }
-
   #list-spend div div:last-child {
+    width: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
   }
-
   #list-spend div div:first-child p:first-child {
     display: none;
   }
-
   #list-spend div div p {
+    text-align: center;
     margin: 0 5px;
     font-size: 1.4rem;
   }
-
   #list-spend div div img:last-child {
     margin-right: 10px;
   }
-
   #list-spend div div input {
     padding: 10px;
     outline: none;
@@ -399,9 +366,19 @@ img {
     border-radius: 10px;
     width: 99%;
   }
-
   ::-webkit-scrollbar-thumb {
     background-color: #bddfff7e;
     border-radius: 10px;
+  }
+}
+@media screen and (max-width:1400px) {
+  #list-spend{
+    width: 85%;
+  }
+  .cost{
+    width: 85%;
+  }
+  .add-spend{
+    width: 85%;
   }
 }
