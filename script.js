@@ -18,6 +18,13 @@ let indexCost2 = null;
 let count = 0;
 let outlay = [];
 
+let changeOne = {
+  index: null,
+  first: false,
+  second: false,
+  third: false,
+};
+
 window.onload = async () => {
   inputWhere = document.getElementById("where-spend");
   inputHowMuch = document.getElementById("how-much");
@@ -89,16 +96,19 @@ const render = () => {
     container.id = `spend ${index}`;
 
     const num = document.createElement("p");
-    num.innerText = `${index+1})`;
+    num.innerText = `${index + 1})`;
 
     const textWhere = document.createElement("p");
     textWhere.innerText = item.where;
+    textWhere.addEventListener("dblclick", (e) => funcWhere(e, index));
 
     const textDate = document.createElement("p");
     textDate.innerText = item.date;
+    textDate.addEventListener("dblclick", (e) => funcDate(e, index));
 
     const textHowMuch = document.createElement("p");
     textHowMuch.innerText = item.howMuch;
+    textHowMuch.addEventListener("dblclick", (e) => funcHowMuch(e, index));
 
     const textRubl = document.createElement("p");
     textRubl.innerText = "р.";
@@ -115,45 +125,84 @@ const render = () => {
     const div1 = document.createElement("div");
     const div2 = document.createElement("div");
     const div3 = document.createElement("div");
+    const div4 = document.createElement("div");
 
     input1 = document.createElement("input");
     input2 = document.createElement("input");
     input3 = document.createElement("input");
+    input1.autofocus=true;
+    input2.autofocus=true;
+    input3.autofocus=true;
     input1.type = "text";
     input2.type = "text";
     input3.type = "number";
     input1.value = item.where;
     input2.value = item.date;
     input3.value = item.howMuch;
+    
 
     div1.appendChild(num);
 
-    if (index === indexCost && (indexCost != indexCost2 || count === 2)) {
-      indexCost2 = indexCost;
-      indexCost = null;
-      div1.appendChild(input1);
-      div1.appendChild(input2);
-      div2.appendChild(input3);
-      count = 0;
-      input1.addEventListener("change", (e) => funcinput1(e, index));
-      input2.addEventListener("change", (e) => funcinput2(e, index));
-      input3.addEventListener("change", (e) => funcinput3(e, index));
+    if (index === changeOne.index) {
+      changeOne.index = null;
+      if (changeOne.first) {
+        changeOne.first = !changeOne.first;
+        input1.selectionStart = input1.value.length;
+        div1.appendChild(input1);
+        input1.addEventListener("blur", (e) => funcinput1(e, index));
+      } else {
+        div1.appendChild(textWhere);
+      }
+
+      if (changeOne.second) {
+        changeOne.second = !changeOne.second;
+        input2.selectionStart = input2.value.length;
+        div2.appendChild(input2);
+        input2.addEventListener("blur", (e) => funcinput2(e, index));
+      } else {
+        div2.appendChild(textDate);
+      }
+      if (changeOne.third) {
+        changeOne.third = !changeOne.third;
+        input3.selectionStart = input3.value.length;
+        div3.appendChild(input3);
+        input3.addEventListener("blur", (e) => funcinput3(e, index));
+      } else {
+        div3.appendChild(textHowMuch);
+      }
     } else {
       div1.appendChild(textWhere);
-      div1.appendChild(textDate);
-      div2.appendChild(textHowMuch);
+      div2.appendChild(textDate);
+      div3.appendChild(textHowMuch);
     }
 
-    div2.appendChild(textRubl);
+    // if (index === indexCost && (indexCost != indexCost2 || count === 2)) {
+    //   indexCost2 = indexCost;
+    //   indexCost = null;
+    //   div1.appendChild(input1);
+    //   div2.appendChild(input2);
+    //   div3.appendChild(input3);
+    //   count = 0;
+    //   input1.addEventListener("change", (e) => funcinput1(e, index));
+    //   input2.addEventListener("change", (e) => funcinput2(e, index));
+    //   input3.addEventListener("change", (e) => funcinput3(e, index));
+    // } else {
+    //   div1.appendChild(textWhere);
+    //   div2.appendChild(textDate);
+    //   div3.appendChild(textHowMuch);
+    // }
 
-    div3.appendChild(imgEdit);
-    div3.appendChild(imgDel);
+    div3.appendChild(textRubl);
+
+    div4.appendChild(imgEdit);
+    div4.appendChild(imgDel);
 
     container.appendChild(div1);
     container.appendChild(div2);
     container.appendChild(div3);
+    container.appendChild(div4);
     content.appendChild(container);
-    imgEdit.addEventListener("click", (e) => funcEdit(e, index));
+    // imgEdit.addEventListener("click", (e) => funcEdit(e, index));
   });
   outlay.forEach((item) => {
     finalcost += +item.howMuch;
@@ -179,8 +228,32 @@ const funcEdit = (event, index) => {
   count++;
   render();
 };
+
+funcWhere = (event, index) => {
+  changeOne.index = index;
+  changeOne.first = !changeOne.first;
+  console.log(index);
+  render();
+};
+
+funcDate = (event, index) => {
+  changeOne.index = index;
+  changeOne.second = !changeOne.second;
+  console.log(index);
+  render();
+};
+
+funcHowMuch = (event, index) => {
+  changeOne.index = index;
+  changeOne.third = !changeOne.third;
+  console.log(index);
+  render();
+};
+
 funcinput1 = async (event, index) => {
   let { _id } = outlay[index];
+
+  console.log(event.target.value.length);
   if (event.target.value.length != 0) {
     const response = await fetch("http://localhost:8080/patch", {
       method: "PATCH",
@@ -198,6 +271,7 @@ funcinput1 = async (event, index) => {
   } else {
     alert("Изменённые значения не корректны");
   }
+  render();
 };
 funcinput2 = async (event, index) => {
   let { _id } = outlay[index];
@@ -218,6 +292,7 @@ funcinput2 = async (event, index) => {
   } else {
     alert("Изменённые значения не корректны");
   }
+  render();
 };
 funcinput3 = async (event, index) => {
   let { _id } = outlay[index];
@@ -238,4 +313,5 @@ funcinput3 = async (event, index) => {
   } else {
     alert("Изменённые значения не корректны");
   }
+  render();
 };
