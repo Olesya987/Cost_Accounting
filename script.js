@@ -6,9 +6,9 @@ let buttonAdd = null;
 let content = null;
 let container = null;
 let finalcost = 0;
-let input1 = document.createElement("input");
-let input2 = document.createElement("input");
-let input3 = document.createElement("input");
+let input1 = null;
+let input2 = null;
+let input3 = null;
 let indexCost = null;
 let outlay = [];
 
@@ -42,13 +42,9 @@ window.onload = async () => {
   render();
 };
 
-const writeWhere = (event) => {
-  varWhere = event.target.value;
-};
+const writeWhere = (event) => (varWhere = event.target.value);
 
-const writeHowMuch = (event) => {
-  varHowMuch = event.target.value;
-};
+const writeHowMuch = (event) => (varHowMuch = event.target.value);
 
 const addCost = async (event) => {
   if (varWhere.length != 0 && varHowMuch.length != 0) {
@@ -129,6 +125,9 @@ const render = () => {
     const div2 = document.createElement("div");
     const div3 = document.createElement("div");
     const div4 = document.createElement("div");
+    input1 = document.createElement("input");
+    input2 = document.createElement("input");
+    input3 = document.createElement("input");
 
     div1.appendChild(num);
     if (index === changeOne.index) {
@@ -211,9 +210,7 @@ const render = () => {
     imgEdit.addEventListener("click", (e) => funcEdit(e, index));
   });
 
-  finalcost = outlay.reduce((final, next) => {
-    return final + +next.howMuch;
-  }, finalcost);
+  finalcost = outlay.reduce((final, next) => final + +next.howMuch, finalcost);
   const textFinalCost = document.getElementById("cost");
   textFinalCost.innerText = `${finalcost} р.`;
 };
@@ -372,14 +369,8 @@ const funcinput3 = async (event, index) => {
   render();
 };
 
-const funcinput1all = (event, index) => {
-  newSpend.where = event.target.value;
-};
+const funcinput1all = (event, index) => (newSpend.where = event.target.value);
 
-const funcinput2all = (event, index) => {
-  newSpend.date = event.target.value;
-};
+const funcinput2all = (event, index) => (newSpend.date = event.target.value);
 
-const funcinput3all = (event, index) => {
-  newSpend.howMuch = event.target.value;
-};
+const funcinput3all = (event, index) => (newSpend.howMuch = event.target.value);
