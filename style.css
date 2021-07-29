@@ -95,10 +95,8 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap");
-
 body {
   height: 100vh;
   width: 100vw;
@@ -243,7 +241,6 @@ button:focus {
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  /* justify-content: space-between; */
 }
 
 #list-spend div div {
@@ -416,15 +413,16 @@ img {
     border-radius: 10px;
   }
 }
+@media screen and (max-width: 1400px) {
+  #list-spend {
+    width: 85%;
+  }
 
-@media screen and (max-width:1400px) {
-  #list-spend{
+  .cost {
     width: 85%;
   }
-  .cost{
-    width: 85%;
-  }
-  .add-spend{
+
+  .add-spend {
     width: 85%;
   }
 }
