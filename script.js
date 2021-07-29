@@ -6,12 +6,10 @@ let buttonAdd = null;
 let content = null;
 let container = null;
 let finalcost = 0;
-let input1 = null;
-let input2 = null;
-let input3 = null;
+let input1 = document.createElement("input");
+let input2 = document.createElement("input");
+let input3 = document.createElement("input");
 let indexCost = null;
-let indexCost2 = null;
-let count = 0;
 let outlay = [];
 
 const changeOne = {
@@ -109,7 +107,7 @@ const render = () => {
     textRubl.innerText = "р.";
     const imgDel = document.createElement("img");
     imgDel.src = "icons8-trash.svg";
-    imgDel.onclick = func = () => {
+    imgDel.onclick = () => {
       funcDel(index);
     };
 
@@ -117,13 +115,13 @@ const render = () => {
     imgEdit.src = "icons8-edit-64.png";
     const imgSave = document.createElement("img");
     imgSave.src = "icons8-ок.svg";
-    imgSave.onclick = func = () => {
+    imgSave.onclick = () => {
       funcSave(index);
     };
 
     const imgCancel = document.createElement("img");
     imgCancel.src = "icons8-delete-64.png";
-    imgCancel.onclick = func = () => {
+    imgCancel.onclick = () => {
       funcCancel(index);
     };
 
@@ -136,7 +134,6 @@ const render = () => {
     if (index === changeOne.index) {
       changeOne.index = null;
       if (changeOne.first) {
-        input1 = document.createElement("input");
         input1.autofocus = true;
         input1.type = "text";
         input1.value = item.where;
@@ -149,7 +146,6 @@ const render = () => {
       }
 
       if (changeOne.second) {
-        input2 = document.createElement("input");
         input2.autofocus = true;
         input2.type = "text";
         input2.value = item.date;
@@ -162,7 +158,6 @@ const render = () => {
       }
 
       if (changeOne.third) {
-        input3 = document.createElement("input");
         input3.autofocus = true;
         changeOne.third = !changeOne.third;
         input3.type = "number";
@@ -177,9 +172,6 @@ const render = () => {
       div4.appendChild(imgDel);
     } else {
       if (index === indexCost) {
-        input1 = document.createElement("input");
-        input2 = document.createElement("input");
-        input3 = document.createElement("input");
         input1.autofocus = true;
         input2.autofocus = true;
         input3.autofocus = true;
@@ -198,7 +190,6 @@ const render = () => {
         div3.appendChild(input3);
         div4.appendChild(imgSave);
         div4.appendChild(imgCancel);
-        count = 0;
         input1.addEventListener("change", (e) => funcinput1all(e, index));
         input2.addEventListener("change", (e) => funcinput2all(e, index));
         input3.addEventListener("change", (e) => funcinput3all(e, index));
@@ -220,25 +211,24 @@ const render = () => {
     imgEdit.addEventListener("click", (e) => funcEdit(e, index));
   });
 
-  outlay.forEach((item) => {
-    finalcost += +item.howMuch;
-  });
-
+  finalcost = outlay.reduce((final, next) => {
+    return final + +next.howMuch;
+  }, finalcost);
   const textFinalCost = document.getElementById("cost");
   textFinalCost.innerText = `${finalcost} р.`;
 };
 
 const funcSave = async (index) => {
   let { _id } = outlay[index];
-  if (newSpend.where === null) {
+  if (!newSpend.where) {
     newSpend.where = outlay[index].where;
   }
 
-  if (newSpend.date === null) {
+  if (!newSpend.date) {
     newSpend.date = outlay[index].date;
   }
 
-  if (newSpend.howMuch === null) {
+  if (!newSpend.howMuch) {
     newSpend.howMuch = outlay[index].howMuch;
   }
 
@@ -292,7 +282,6 @@ const funcDel = async (index) => {
 
 const funcEdit = (event, index) => {
   indexCost = index;
-  count++;
   render();
 };
 
